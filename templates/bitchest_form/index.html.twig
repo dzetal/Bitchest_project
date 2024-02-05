@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BitchestFormController!{% endblock %}
+
+{% block body %}
+
+
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://fr.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Suivre tous les marchés sur TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+  {
+  "symbols": [
+    [
+      "BITSTAMP:BTCEUR|1D|EUR"
+    ],
+    [
+      "BITSTAMP:ADAEUR|1D|EUR"
+    ],
+    [
+      "KRAKEN:DASHEUR|1D|EUR"
+    ],
+    [
+      "BITSTAMP:ETHEUR|1D|EUR"
+    ],
+    [
+      "POLONIEX:XEMUSD|1D|EUR"
+    ],
+    [
+      "KRAKEN:XRPEUR|1D|EUR"
+    ],
+    [
+      "BITSTAMP:XLMEUR|1D|EUR"
+    ]
+  ],
+  "chartOnly": false,
+  "width": 1000,
+  "height": 500,
+  "locale": "fr",
+  "colorTheme": "light",
+  "autosize": false,
+  "showVolume": false,
+  "showMA": false,
+  "hideDateRanges": false,
+  "hideMarketStatus": false,
+  "hideSymbolLogo": false,
+  "scalePosition": "right",
+  "scaleMode": "Normal",
+  "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+  "fontSize": "10",
+  "noTimeScale": false,
+  "valuesTracking": "1",
+  "changeMode": "price-and-percent",
+  "chartType": "area",
+  "maLineColor": "#2962FF",
+  "maLineWidth": 1,
+  "maLength": 9,
+  "backgroundColor": "rgba(255, 255, 255, 1)",
+  "lineWidth": 2,
+  "lineType": 0,
+  "dateRanges": [
+    "1d|1",
+    "1m|30",
+    "3m|60",
+    "12m|1D",
+    "60m|1W",
+    "all|1M"
+  ],
+  "dateFormat": "dd MMM 'yy"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+
+{% endblock %}
