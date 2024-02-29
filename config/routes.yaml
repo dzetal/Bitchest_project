@@ -3,3 +3,10 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+profil_edit:
+    path: /profil
+    controller: App\Controller\ProfilController::edit
+    methods: ['GET', 'POST']
+profil_picture:
+    path: /uploads/profil_pictures/{filename}
+    controller: App\Controller\ProfilController::showPicture

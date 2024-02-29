@@ -5,6 +5,8 @@
 {% block body %}
 <div>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+{# debut de la navbar #}
     
     <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200">
         <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"></div>
@@ -22,7 +24,7 @@
             </div>
     
             <nav class="mt-10">
-                <a class="flex items-center px-6 py-2 mt-4 text-gray-100 bg-gray-700 bg-opacity-25" href="#">
+                <a class="flex items-center px-6 py-2 mt-4 text-gray-100 bg-gray-700 bg-opacity-25" href="{{ path('app_admin_index') }}">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -35,7 +37,7 @@
                 </a>
     
                 <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                    href="#">
+                    href="{{ path('app_report') }}">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -43,11 +45,11 @@
                         </path>
                     </svg>
     
-                    <span class="mx-3">UI Elements</span>
+                    <span class="mx-3"> Report </span>
                 </a>
     
                 <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                    href="#">
+                    href="{{ path('app_profil') }}">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -55,7 +57,7 @@
                         </path>
                     </svg>
     
-                    <span class="mx-3">Tables</span>
+                    <span class="mx-3">Profil</span>
                 </a>
     
                 <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
@@ -73,107 +75,51 @@
         </div>
 
 
+{# fin de la navbar #}
 
-        <div class="mt-16" style="margin-left: 12rem;"></div>
+    <main class=" flex-1 overflow-x-hidden overflow-y-auto bg-gray-200" >
 
-
-
-        
-<div class="flex flex-col flex-1 overflow-hidden" style="width:100%;">
-
-
-
-<div class=" MyWidgets" style="display:flex; flex-direction:row; justify-content:space-between;"> 
-          <!-- TradingView Widget BEGIN -->
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-            {
-              "symbol": "FX:EURUSD",
-              "width": 350,
-              "height": 220,
-              "locale": "en",
-              "dateRange": "12M",
-              "colorTheme": "light",
-              "isTransparent": false,
-              "autosize": false,
-              "largeChartUrl": ""
-            }
-          </script>
-        </div>
-
-
-  <!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-  {
-  "feedMode": "symbol",
-  "symbol": "INDEX:BTCUSD",
-  "isTransparent": false,
-  "displayMode": "regular",
-  "width": "350",
-  "height": "220",
-  "colorTheme": "light",
-  "locale": "en"
-}
-  </script>
+<div class="px-6 py-6">
+<script async src="https://static.coinstats.app/widgets/coin-price-marquee-widget.js"></script>
+<coin-stats-marquee-widget locale="en" currency="EUR" background="#FFFFFF" status-up-color="#4F8A5B" status-down-color="#FE4747" text-color="#1C1B1B" buttons-color="#1C1B1B" border-color="rgba(28,27,27,0.15)" position="static" font="Roboto, Arial, Helvetica" width="100%" coins-count="20" ></coin-stats-marquee-widget>
 </div>
-<!-- TradingView Widget END -->
 
-        
-        </div>
-
-
-
-
-    <main class="mt-16 flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-
-
-                <div class="container px-6 py-8 mx-auto">
-                   
-    
-                    <div class="flex flex-col mt-8">
+                <div class="container px-6 py-2 mx-auto">
+                    <div class="flex flex-col ">
                         <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                            <div
-                                class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
-                                <table class="min-w-full" style="width:100%; margin-top:4rem">
+                            <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+                                <table class="min-w-full">
                                     <thead>
                                         <tr>
                                             <th
-                                                class="px-20 px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                                class="px-6 px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                                 ID</th>
                                             <th
-                                                class="px-20 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                                 Username</th>
                                             <th
-                                                class="px-20 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                                 Email</th>
                                             <th
-                                                class="px-20 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                                 Firstname</th>
 
                                             <th
-                                                class="px-20 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                                 Lastname</th>
 
-                                            <th
-                                                class="px-20 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                                Password</th>
 
                                             <th
-                                                class="px-20 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                                class="px-10 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                                 Action</th>
-                                            <th class="px-20 py-3 border-b border-gray-200 bg-gray-50"></th>
+                                            
                                         </tr>
                                     </thead>
     
                                     <tbody class="bg-white">
                                     {% for user in users %}
                                         <tr>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-200">
                                                 <div class="flex items-center">
     
                                                     <div class="ml-4">
@@ -183,33 +129,36 @@
                                                 </div>
                                             </td>
     
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900"> {{ user.username }} </div>
-                                            
+                                            <td
+                                                class="px-6 py-4 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200">
+                                                <span class="text-indigo-600 hover:text-indigo-900"> {{ user.username }} </span>
                                             </td>
     
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-200">
                                                 <span
                                                     class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"> {{ user.email }} </span>
                                             </td>
     
                                             <td
-                                                class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200"> {{ user.firstname }}</td>
-    
-                                            <td
-                                                class="px-6 py-4 text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200">
-                                                <span class="text-indigo-600 hover:text-indigo-900">{{ user.lastname }} </span>
+                                                class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200"> {{ user.firstname }}
                                             </td>
+
+                                             <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                                             {{ user.lastname }}
+                                            
+                                            </td>
+    
+
+
+
 
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900"> {{ user.password }} </div>
+                                                <div class="text-sm leading-5 text-gray-900"> 
+                                                 <a href="{{ path('app_admin_show', {'id': user.id}) }}">show</a>
+                                                 <a href="{{ path('app_admin_edit', {'id': user.id}) }}">edit</a>
+                     </div>
                                             
-                                            </td>
-
-                                            {# <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900"> {{ user.username }} </div>
-                                            
-                                            </td> #}
+                                            </td> 
                                         </tr>
                                         {% endfor %}
                                     </tbody>
@@ -218,39 +167,11 @@
                         </div>
                     </div>
                 </div>
+{# fin du tableau de donnée #}
 
-                    <div class=" flex-row">
-           <!-- TradingView Widget BEGIN -->
-          <div class="tradingview-widget-container" style="margin-top: 80px; margin-left:50px">
-          <div class="tradingview-widget-container__widget"></div>
-          <div class="tradingview-widget-copyright"><a href="https://fr.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Suivre tous les marchés sur TradingView</span></a></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-            {
-             "width": 1000,
-              "height": 490,
-              "defaultColumn": "overview",
-              "screener_type": "crypto_mkt",
-              "displayCurrency": "USD",
-              "colorTheme": "light",
-              "locale": "fr"
-            }
-          </script>
-        </div>
-<!-- TradingView Widget END -->
-        </div>
-            </main>
-        </div>
-    </div>
+ </main>
+
 </div>
-
-<style>
-
-td{
-    margin-top: 100px;
-}
-
-
-</style>
 
 
 {% endblock %}

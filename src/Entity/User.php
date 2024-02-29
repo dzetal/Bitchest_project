@@ -38,6 +38,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $ProfilPicture = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,6 +143,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getProfilPicture(): ?string
+    {
+        return $this->ProfilPicture;
+    }
+
+    public function setProfilPicture(string $ProfilPicture): static
+    {
+        $this->ProfilPicture = $ProfilPicture;
 
         return $this;
     }
