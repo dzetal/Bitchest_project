@@ -42,21 +42,21 @@ class ProfilController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $file = $form->get('ProfilPicture')->getData();
+            // $file = $form->get('ProfilPicture')->getData();
 
-            if ($file) {
-                // Génération d'un nom unique pour le fichier
-                $fileName = uniqid().'.'.$file->guessExtension();
+            // if ($file) {
+            //     // Génération d'un nom unique pour le fichier
+            //     $fileName = uniqid().'.'.$file->guessExtension();
     
-                // Déplacement du fichier dans le répertoire de destination
-                $file->move(
-                    $this->getParameter('profil_picture_directory'), // Répertoire de destination (défini dans services.yaml)
-                    $fileName
-                );
+            //     // Déplacement du fichier dans le répertoire de destination
+            //     $file->move(
+            //         $this->getParameter('profil_picture_directory'), // Répertoire de destination (défini dans services.yaml)
+            //         $fileName
+            //     );
     
-                // Mise à jour du chemin de l'image dans l'entité User
-                $user->setProfilPicture($fileName);
-            }
+            //     // Mise à jour du chemin de l'image dans l'entité User
+            //     $user->setProfilPicture($fileName);
+            // }
 
             // Enregistrer les modifications dans la base de données
             $entityManager = $this->doctrine->getManager();

@@ -12,7 +12,7 @@
   </div>
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm h-full">
-    <form class="space-y-6" action="#" method="POST">
+    <form class="space-y-6" action="{{ url('app_register') }}" method="POST">
 
     {{ form_errors(registrationForm) }}
 
@@ -42,7 +42,7 @@
       <div>
         <label for="lastname" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
         <div class="mt-2">
-          {{ form_widget(registrationForm.Lastname, {'id': 'lastname', 'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'}) }}
+          {{ form_widget(registrationForm.lastname, {'id': 'lastname', 'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'}) }}
         </div>
       </div>
 
@@ -85,7 +85,7 @@
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.username) }}
         {{ form_row(registrationForm.firstname) }}
-        {{ form_row(registrationForm.Lastname) }}
+        {{ form_row(registrationForm.lastname) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.roles) }}
         {{ form_row(registrationForm.plainPassword, {

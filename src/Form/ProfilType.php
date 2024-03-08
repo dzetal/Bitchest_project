@@ -19,11 +19,6 @@ class ProfilType extends AbstractType
             ->add('firstname', TextType::class)
             ->add('lastname', TextType::class)
             ->add('email', EmailType::class)
-            ->add('ProfilPicture', FileType::class, [
-                'label' => 'Profile Picture',
-                'mapped' => false, 
-                'required' => false, 
-            ])
             ;
             // Add other fields as needed
     }

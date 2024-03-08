@@ -33,13 +33,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Lastname = null;
+    private ?string $lastname = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $ProfilPicture = null;
 
     public function getId(): ?int
     {
@@ -125,12 +122,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getLastname(): ?string
     {
-        return $this->Lastname;
+        return $this->lastname;
     }
 
-    public function setLastname(string $Lastname): static
+    public function setLastname(string $lastname): static
     {
-        $this->Lastname = $Lastname;
+        $this->lastname = $lastname;
 
         return $this;
     }
@@ -147,15 +144,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getProfilPicture(): ?string
-    {
-        return $this->ProfilPicture;
-    }
-
-    public function setProfilPicture(string $ProfilPicture): static
-    {
-        $this->ProfilPicture = $ProfilPicture;
-
-        return $this;
-    }
 }

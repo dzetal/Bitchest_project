@@ -45,7 +45,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('firstname')
-            ->add('Lastname')
+            ->add('lastname')
             ->add('email')
             ->add('roles', ChoiceType::class, [
                 'choices' => [
