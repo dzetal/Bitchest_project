@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Form\ProfilType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +43,7 @@ class RegistrationController extends AbstractController
             if(in_array('ROLE_ADMIN', $user->getRoles())) {
                 return $this->redirectToRoute('app_admin_index');
             } else {
-                return $this->redirectToRoute('app_home');
+                return $this->redirectToRoute('app_user_index');
             }
 
 
