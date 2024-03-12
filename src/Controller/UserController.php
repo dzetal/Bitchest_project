@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Entity\Wallet;
+use App\Repository\WalletRepository;
 
 #[Route('/user')]
 class UserController extends AbstractController
@@ -78,4 +80,58 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
-}
+    // Existing methods..
+    
+        #[Route('/user/{id}/initialize-wallet', name: 'app_user_initialize_wallet', methods: ['POST'])]
+        public function initializeWallet(User $user, EntityManagerInterface $entityManager): Response
+        {
+            $existingWallet = $user->getWallet();
+            
+            // Check if user already has a wallet
+            if ($existingWallet !== null) {
+                // Redirect or return appropriate response
+            }
+    
+            // Create a new wallet for the user with an initial balance of 500 euros
+            $wallet = new Wallet();
+            $wallet->setBalance(500);
+            $wallet->setUser($user);
+            $entityManager->persist($wallet);
+            $entityManager->flush();
+    
+            // Redirect or return appropriate response
+        }
+    
+        #[Route('/user/{id}/portfolio', name: 'app_user_portfolio', methods: ['GET'])]
+
+        public function portfolio(User $user, WalletRepository $walletRepository): Response
+        {
+            $wallet = $user->getWallet();
+            
+            // Fetch the list of cryptocurrencies owned by the user and their respective purchase details
+            // Example: $cryptoList = $wallet->getCryptocurrencies();
+    
+            return $this->render('user/portfolio.html.twig', [
+                'user' => $user,
+                'wallet' => $wallet,
+                // Pass any other necessary data to the template
+            ]);
+        }
+    
+        #[Route('/user/{id}/sell-crypto', name: 'app_user_sell_crypto', methods: ['POST'])]
+        public function sellCrypto(Request $request, User $user, EntityManagerInterface $entityManager): Response
+        {
+            // Sell cryptocurrency logic
+    
+            // Redirect or return appropriate response
+        }
+    
+        #[Route('/user/{id}/buy-crypto', name: 'app_user_buy_crypto', methods: ['POST'])]
+        public function buyCrypto(Request $request, User $user, EntityManagerInterface $entityManager): Response
+        {
+            // Buy cryptocurrency logic
+    
+            // Redirect or return appropriate response
+        }
+    }
+    

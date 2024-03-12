@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sell Cryptocurrency{% endblock %}
+
+{% block body %}
+  <h1>Sell Cryptocurrency</h1>
+  <form action="{{ path('sell_crypto') }}" method="post">
+    <label for="crypto">Cryptocurrency:</label>
+    <select id="crypto" name="crypto">
+      {% for crypto in portfolio %}
+        <option value="{{ crypto.id }}">{{ crypto.name }}</option>
+      {% endfor %}
+    </select><br>
+    <label for="quantity">Quantity:</label>
+    <input type="text" id="quantity" name="quantity"><br>
+    <button type="submit">Sell</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User Portfolio{% endblock %}
+
+{% block body %}
+  <h1>User Portfolio</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Cryptocurrency</th>
+        <th>Quantity Owned</th>
+        <th>Purchase Price</th>
+        <th>Current Price</th>
+        <th>Current Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for crypto in portfolio %}
+        <tr>
+          <td>{{ crypto.name }}</td>
+          <td>{{ crypto.quantity }}</td>
+          <td>{{ crypto.purchasePrice }}</td>
+          <td>{{ crypto.currentPrice }}</td>
+          <td>{{ crypto.currentValue }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

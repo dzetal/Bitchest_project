@@ -22,10 +22,10 @@ class Transaction
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $quantity = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $purchaseprice = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $Amount = null;
 
     #[ORM\ManyToOne(inversedBy: 'HasTransaction')]

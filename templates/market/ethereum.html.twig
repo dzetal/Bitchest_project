@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Buy Ethereum{% endblock %}
+
+{% block body %}
+<div class="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+  <!-- Your existing HTML code goes here -->
+  <!-- Replace the form action with Symfony route -->
+  <form action="{{ path('buy_ethereum_process') }}" method="post">
+    <div class="ml-4 flex flex-1 flex-col">
+      <div>
+        <div class="flex justify-between text-base font-medium text-gray-900">
+          <h3>Ethereum</h3>
+          <p class="ml-4">$4000.00</p>
+        </div>
+        <p class="mt-1 text-sm text-gray-500">Quantity: <input type="number" name="quantity" value="1" min="0.01" step="any"></p>
+      </div>
+      <div class="flex flex-1 items-end justify-between text-sm">
+        <button type="submit" class="font-medium text-indigo-600 hover:text-indigo-500">Buy</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

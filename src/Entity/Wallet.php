@@ -32,6 +32,9 @@ class Wallet
     #[ORM\ManyToOne(inversedBy: 'HasWallet')]
     private ?CryptoCurrency $cryptoCurrency = null;
 
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    private ?string $Wallet = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,4 +105,71 @@ class Wallet
         return $this;
     }
 
-}
+    public function getWallet(): ?string
+    {
+        return $this->Wallet;
+    }
+
+    public function setWallet(string $Wallet): static
+    {
+        $this->Wallet = $Wallet;
+
+        return $this;
+    }
+
+    
+        // Other getters and setters...
+    
+        /**
+         * Initialize the wallet with a default balance of 500 euros.
+         */
+        public function initializeWithDefaultBalance(): void
+        {
+            // Assuming 'Wallet' property holds the balance
+            $this->setWallet('500');
+        }
+    
+        /**
+         * Add a cryptocurrency to the wallet.
+         * 
+         * @param string $quantity The quantity of the cryptocurrency to add.
+         * @param string $cost     The total cost of purchasing the cryptocurrency.
+         */
+        public function addCryptoCurrency(string $quantity, string $cost): void
+        {
+            // Update total quantity and total cost based on the purchased cryptocurrency
+            $this->totalquantity += $quantity;
+            $this->totalcost += $cost;
+            
+            // Calculate the new actual capital gain
+            $this->actualcapitalgain = $this->calculateActualCapitalGain();
+        }
+    
+        /**
+         * Sell a cryptocurrency from the wallet.
+         * 
+         * @param string $quantity The quantity of the cryptocurrency to sell.
+         * @param string $price    The selling price of the cryptocurrency.
+         */
+        public function sellCryptoCurrency(string $quantity, string $price): void
+        {
+            // Update total quantity based on the sold cryptocurrency
+            $this->totalquantity -= $quantity;
+            
+            // Calculate the new actual capital gain
+            $this->actualcapitalgain = $this->calculateActualCapitalGain();
+        }
+    
+        /**
+         * Calculate the actual capital gain.
+         * 
+         * @return string The calculated actual capital gain.
+         */
+        private function calculateActualCapitalGain(): string
+        {
+            // Calculate the new actual capital gain based on the total quantity, total cost, and current prices
+            // Replace this with your actual calculation logic
+            return '100'; // Example return value
+        }
+    }
+    
